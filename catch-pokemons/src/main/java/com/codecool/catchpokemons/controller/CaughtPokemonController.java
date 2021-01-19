@@ -3,17 +3,21 @@ package com.codecool.catchpokemons.controller;
 import com.codecool.catchpokemons.entity.CaughtPokemon;
 import com.codecool.catchpokemons.service.CaughtPokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/pokemons")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CaughtPokemonController {
 
     @Autowired
     private CaughtPokemonService caughtPokemonService;
 
     @PostMapping("/catch/{name}")
-    public CaughtPokemon addVideo(@PathVariable("name") String name) {
-        return caughtPokemonService.saveCaughtPokemon(name);
+    public void catchPokemon(@PathVariable("name") String name) {
+        caughtPokemonService.saveCaughtPokemon(name);
     }
 }
