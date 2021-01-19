@@ -18,8 +18,8 @@ public class PokemonController {
     @Autowired
     PokemonRepository pokemonRepository;
 
-    @GetMapping("/all")
-    public List<Pokemon> getAllVideos(){
+    @GetMapping("/")
+    public List<Pokemon> getAllPokemons(){
         return pokemonRepository.findAll();
     }
 

@@ -24,9 +24,6 @@ public class PokemonApplication {
 	@Autowired
 	PokemonRepository pokemonRepository;
 
-	@Value("https://pokeapi.co/api/v2/pokemon")
-	private String pokemonData;
-
 	public static void main(String[] args) {
 		SpringApplication.run(PokemonApplication.class, args);
 	}
