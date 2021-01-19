@@ -16,4 +16,13 @@ public class CaughtPokemonService {
         caughtPokemon.setName(name);
         return repository.save(caughtPokemon);
     }
+
+    public List<CaughtPokemon> findAllPokemons() {
+        System.out.println(repository.findAll().toString());
+        return repository.findAll();
+    }
+
+    public void deleteCaughtPokemon(String name) {
+        repository.deleteByName(name);
+    }
 }
