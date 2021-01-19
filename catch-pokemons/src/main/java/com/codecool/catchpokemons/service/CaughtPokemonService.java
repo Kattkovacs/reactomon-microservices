@@ -27,4 +27,8 @@ public class CaughtPokemonService {
     public void deleteCaughtPokemon(String name) {
         repository.deleteByName(name);
     }
+
+    public CaughtPokemon findPokemonByName(String name) {
+        return repository.findByName(name);
+    }
 }
