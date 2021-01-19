@@ -17,7 +17,9 @@ public class CaughtPokemonController {
 
     @PostMapping("/catch/{name}")
     public void catchPokemon(@PathVariable("name") String name) {
-        caughtPokemonService.saveCaughtPokemon(name);
+        if (caughtPokemonService.findPokemonByName(name) == null) {
+            caughtPokemonService.saveCaughtPokemon(name);
+        }
     }
 
     @GetMapping("/all-caught-pokemons")
