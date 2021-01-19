@@ -9,4 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 public interface CaughtPokemonRepository extends JpaRepository<CaughtPokemon, Integer> {
     @Transactional
     void deleteByName(String name);
+
+    CaughtPokemon findByName(String name);
 }
