@@ -20,4 +20,14 @@ public class CaughtPokemonController {
     public void catchPokemon(@PathVariable("name") String name) {
         caughtPokemonService.saveCaughtPokemon(name);
     }
+
+    @GetMapping("/all-caught-pokemons")
+    public List<CaughtPokemon> getAllCaughtPokemons() {
+        return caughtPokemonService.findAllPokemons();
+    }
+
+    @PostMapping("/remove/{name}")
+    public void deleteCaughtPokemon(@PathVariable("name") String name) {
+        caughtPokemonService.deleteCaughtPokemon(name);
+    }
 }
