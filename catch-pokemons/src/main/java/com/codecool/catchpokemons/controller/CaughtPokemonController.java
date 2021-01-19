@@ -12,7 +12,7 @@ public class CaughtPokemonController {
     @Autowired
     private CaughtPokemonService caughtPokemonService;
 
-    @PostMapping("/catch/${name}")
+    @PostMapping("/catch/{name}")
     public CaughtPokemon addVideo(@PathVariable("name") String name) {
         return caughtPokemonService.saveCaughtPokemon(name);
     }
