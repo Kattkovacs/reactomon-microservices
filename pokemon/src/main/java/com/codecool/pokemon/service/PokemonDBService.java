@@ -1,17 +1,23 @@
 package com.codecool.pokemon.service;
 
 import com.codecool.pokemon.model.Pokemon;
+
+import com.codecool.pokemon.model.Pokemons;
 import com.codecool.pokemon.repository.PokemonRepository;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
+
+@Service
+@Slf4j
 public class PokemonDBService {
 
     @Autowired
@@ -21,14 +27,18 @@ public class PokemonDBService {
     private String pokemonData;
 
     public void importJSONData(){
-        List<Pokemon> pokemons = new ArrayList<>();
         RestTemplate restTemplate = new RestTemplate();
-
-        ResponseEntity<Pokemon> responseEntity = restTemplate.exchange(pokemonData, HttpMethod.GET, null, Pokemon.class);
-        pokemons.add(PokemonMapper.listNewCocktails(responseEntity.getBody()));
+        ResponseEntity<Pokemons> responseEntity = restTemplate
+                .exchange(pokemonData, HttpMethod.GET, null, Pokemons.class);
+        List<Pokemon> pokemons = responseEntity.getBody().getResults();
 
         for (Pokemon pokemon : pokemons) {
-            pokemonRepository.save(pokemon);
+            try {
+                pokemonRepository.save(pokemon);
+            }
+            catch (NullPointerException e) {
+                log.info(e.toString());
+            }
         }
     }
 }

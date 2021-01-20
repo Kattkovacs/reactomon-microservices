@@ -21,5 +21,5 @@ public class Pokemon {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String imageUrl;
+    private String url;
 }
