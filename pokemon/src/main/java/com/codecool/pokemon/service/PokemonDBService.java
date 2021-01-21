@@ -26,6 +26,9 @@ public class PokemonDBService {
     @Value("${pokemons.url}")
     private String pokemonData;
 
+    @Value("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/")
+    private String imageUrl;
+
     public void importJSONData(){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Pokemons> responseEntity = restTemplate
@@ -34,6 +37,10 @@ public class PokemonDBService {
 
         for (Pokemon pokemon : pokemons) {
             try {
+                pokemonRepository.save(pokemon);
+                pokemon.setImageUrl(imageUrl + pokemon.getId() + ".svg");
+                System.out.println(pokemon);
+//                pokemon.setHeight(pokemonData+ "/" + pokemon.getId());
                 pokemonRepository.save(pokemon);
             }
             catch (NullPointerException e) {
