@@ -15,6 +15,8 @@ public class NewPokemonDBService {
         NewPokemon pokemon = new NewPokemon();
         pokemon.setName(newPokemon.getName());
         pokemon.setUrl(newPokemon.getUrl());
+        pokemon.setImageUrl(newPokemon.getImageUrl());
+//        pokemon.setHeight((newPokemon.getHeight()));
         newPokemonRepository.save(pokemon);
     }
 }
