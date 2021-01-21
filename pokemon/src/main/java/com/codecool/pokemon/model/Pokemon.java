@@ -22,4 +22,6 @@ public class Pokemon {
     private Long id;
     private String name;
     private String url;
+    private String imageUrl;
+//    private int height;
 }
