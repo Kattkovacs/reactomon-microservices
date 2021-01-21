@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: zuul-server
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: false
+    serviceUrl:
+      defaultZone: "http://127.0.0.1:8761/eureka"
+
+#zuul:
+#  debug:
+#    request: true
+#  ignored-services: "*"
+#  routes:
+#    recommendation:
+#      serviceId: recommendation
+#      path: "/recommendations/**"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        cloud:
+#          netflix: debug
+#      apache:
+#        http:
+#          wire: debug

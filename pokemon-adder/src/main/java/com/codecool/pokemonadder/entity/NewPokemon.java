@@ -1,4 +1,4 @@
-package com.codecool.pokemon.model;
+package com.codecool.pokemonadder.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,10 +15,9 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Pokemon {
-
+public class NewPokemon {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String name;
     private String url;
