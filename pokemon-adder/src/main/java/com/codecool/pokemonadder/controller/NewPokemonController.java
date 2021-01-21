@@ -7,7 +7,7 @@ import com.codecool.pokemonadder.service.NewPokemonDBService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/pokemons")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class NewPokemonController {
     @Autowired
@@ -16,7 +16,7 @@ public class NewPokemonController {
     @Autowired
     private NewPokemonDBService newPokemonDBService;
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @PostMapping("/save-new-pokemon")
     public void createPokemon(@RequestBody PokemonAbout pokemonAbout) {
         System.out.println(pokemonAbout);
