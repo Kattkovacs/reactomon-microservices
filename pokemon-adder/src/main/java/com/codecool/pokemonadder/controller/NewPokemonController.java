@@ -18,8 +18,8 @@ public class NewPokemonController {
 
 
     @PostMapping("/save-new-pokemon")
-    public void createPokemon(@RequestBody PokemonAbout pokemonAbout) {
-        System.out.println(pokemonAbout);
-        newPokemonDBService.createNewPokemon(pokemonAbout);
+    public void createPokemon(@RequestBody NewPokemon newPokemon) {
+        System.out.println(newPokemon);
+        newPokemonDBService.createNewPokemon(newPokemon);
     }
 }

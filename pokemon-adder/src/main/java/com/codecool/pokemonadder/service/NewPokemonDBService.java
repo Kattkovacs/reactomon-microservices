@@ -11,10 +11,10 @@ public class NewPokemonDBService {
     @Autowired
     private NewPokemonRepository newPokemonRepository;
 
-    public void createNewPokemon(PokemonAbout pokemonAbout){
+    public void createNewPokemon(NewPokemon newPokemon){
         NewPokemon pokemon = new NewPokemon();
-        pokemon.setName(pokemonAbout.getName());
-        pokemon.setImageUrl(pokemonAbout.getImageUrl());
+        pokemon.setName(newPokemon.getName());
+        pokemon.setUrl(newPokemon.getUrl());
         newPokemonRepository.save(pokemon);
     }
 }
