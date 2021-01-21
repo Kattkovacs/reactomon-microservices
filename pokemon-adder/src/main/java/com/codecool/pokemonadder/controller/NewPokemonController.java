@@ -7,6 +7,8 @@ import com.codecool.pokemonadder.service.NewPokemonDBService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class NewPokemonController {
@@ -16,10 +18,14 @@ public class NewPokemonController {
     @Autowired
     private NewPokemonDBService newPokemonDBService;
 
-
     @PostMapping("/save-new-pokemon")
     public void createPokemon(@RequestBody NewPokemon newPokemon) {
         System.out.println(newPokemon);
         newPokemonDBService.createNewPokemon(newPokemon);
+    }
+
+    @GetMapping("/all-added-pokemons")
+    public List<NewPokemon> getAllAddedPokemons(){
+        return newPokemonRepository.findAll();
     }
 }
